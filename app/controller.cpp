@@ -23,17 +23,24 @@ Controller::Controller(float kp, float ki, float kd) {
  */
 Controller::~Controller() { this->isInit = false; }
 /**
- * @brief      Method is to check pid initialized or not
+ * @brief      Method for check pid initialized or not
  * @return     isInit as boolean
 */
 bool Controller::isIntialize() { return this->isInit; }
 /**
- * @brief      Method is to compute pid logics
+ * @brief      Method compute pid logics
  * @return     output as float
 */
-float Controller::compute(float target) {
-  // TODO(MichiMaestre): compute the pid contoller here
+float Controller::computeStep(float target) {
+  // TODO(MichiMaestre): compute the PID Controller logic here
   return 0.0 * target;
+}
+/**
+ * @brief      Method for computing multiple step PID
+ * @return     none
+*/
+void Controller::compute(float target) {
+  // TODO(MichiMaestre): compute the PID Controller for multiple steps here
 }
 /**
  * @brief      Method to get proportional gain

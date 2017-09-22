@@ -33,8 +33,10 @@ class Controller {
   ~Controller();
   // Function to check controller Init
   bool isIntialize();
-  // PID compute
-  float compute(float target);
+  // PID compute step
+  float computeStep(float target);
+  // PID compute till converge
+  void compute(float target);
   // Get kp
   float getKp();
   // set kp
