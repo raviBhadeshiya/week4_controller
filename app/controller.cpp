@@ -47,24 +47,28 @@ float Controller::computeStep(float target) {
 
 // PID compute till converge
 void Controller::compute(float target) {
-  // Initialize Count
-  int count = 0;
-  // Do while Loop
-  do {
-    // Compute the a step in controller
-    auto outputControl = this->computeStep(target);
-    // Update the current state based on output
-    this->currentState = this->currentState + outputControl;
+// TODO(MichiMaestre): This compute method only update the state and called
+// the compute method until 0.0001 threshold of error^2 or 10000 steps
+
+// Initialize Count
+
+// Do while Loop
+
+// Compute the a step in controller
+
+// Update the current state based on output
+
 // DEBUGGING your logic
 #ifdef DEBUG_Controller
-    std::cout << "Step:" << count << " Current:" << this->getCurrentState()
-              << " and Target:" << target << " Error:" << this->error
-              << std::endl;
+  std::cout << "Step:" << count << " Current:" << this->getCurrentState()
+            << " and Target:" << target << " Error:" << this->error
+            << std::endl;
 #endif
-    // Increment count
-    count++;
-    // While condition
-  } while (this->error * this->error > 0.0001 && count < 10000);
+  // Increment count
+
+  // While condition
+
+  // While condition if this->error * this->error > 0.0001 and count < 10000
 }
 
 // Clipping the overshoot output
