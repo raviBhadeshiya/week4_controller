@@ -7,15 +7,14 @@
 #include <controller.hpp>
 #include <iostream>
 #include <memory>
-
 /**
  * @brief      Main function
  *
  * @return     return 0
  */
 int main() {
-  //  std::shared_ptr<Controller> pid = std::make_shared<Controller>();
-  Controller pid;
-  std::cout << pid.compute(1.2);
+  Controller pid(0.01, 0.001, 0.05);
+  pid.compute(25);
+  std::cout << "Final State:" << pid.getCurrentState() << std::endl;
   return 0;
 }
