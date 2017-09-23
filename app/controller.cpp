@@ -47,26 +47,24 @@ float Controller::computeStep(float target) {
 
 // PID compute till converge
 void Controller::compute(float target) {
-  // TODO(MichiMaestre): This compute method only update the state and called 
-  // the compute method until 0.0001 threshold of error^2 or 10000 steps
-
   // Initialize Count
-
+  int count = 0;
   // Do while Loop
-
-  // Compute the a step for controller
-
-  // Update the current state based on output
-  this->currentState = target - 1; // remove this for implementation
-// DEBUGGING your logic toggle a comment, DEBUG_Controller, in controller.hpp
+  do {
+    // Compute the a step in controller
+    auto outputControl = this->computeStep(target);
+    // Update the current state based on output
+    this->currentState = this->currentState + outputControl;
+// DEBUGGING your logic
 #ifdef DEBUG_Controller
-  std::cout << "Step:" << count << " Current:" << this->currentState
-            << " and Target:" << target << " Error:" << this->error
-            << std::endl;
+    std::cout << "Step:" << count << " Current:" << this->getCurrentState()
+              << " and Target:" << target << " Error:" << this->error
+              << std::endl;
 #endif
-  // Increment count
-
-  // While condition if this->error * this->error > 0.0001 and count < 10000
+    // Increment count
+    count++;
+    // While condition
+  } while (this->error * this->error > 0.0001 && count < 10000);
 }
 
 // Clipping the overshoot output
@@ -87,15 +85,14 @@ void Controller::setKi(float ki) { this->ki = ki; }
 // set current state
 void Controller::setCurrentState(float state) { this->currentState = state; }
 
-// TODO(MichiMaestre): Return the each correct variable's values
 // get kp
-float Controller::getKp() { return 0; }
+float Controller::getKp() { return this->kp; }
 
 // get kd
-float Controller::getKd() { return 0; }
+float Controller::getKd() { return this->kd; }
 
 // get ki
-float Controller::getKi() { return 0; }
+float Controller::getKi() { return this->ki; }
 
 // Get current state
-float Controller::getCurrentState() { return 0; }
+float Controller::getCurrentState() { return this->currentState; }
