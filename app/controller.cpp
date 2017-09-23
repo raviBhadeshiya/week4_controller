@@ -47,9 +47,8 @@ float Controller::computeStep(float target) {
 
 // PID compute till converge
 void Controller::compute(float target) {
-  // TODO(MichiMaestre): This compute method only update the state and called
-  // the
-  // compute method until 0.0001 error^2 threshold or 10000 steps
+  // TODO(MichiMaestre): This compute method only update the state and called 
+  // the compute method until 0.0001 threshold of error^2 or 10000 steps
 
   // Initialize Count
 
@@ -58,7 +57,7 @@ void Controller::compute(float target) {
   // Compute the a step for controller
 
   // Update the current state based on output
-  this->currentState = target - 1;
+  this->currentState = target - 1; // remove this for implementation
 // DEBUGGING your logic toggle a comment, DEBUG_Controller, in controller.hpp
 #ifdef DEBUG_Controller
   std::cout << "Step:" << count << " Current:" << this->currentState
