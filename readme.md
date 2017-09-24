@@ -1,5 +1,5 @@
 # C++ Boilerplate
-[![Build Status](https://travis-ci.org/MichiMaestre/PID-Controller.svg?branch=master)](https://travis-ci.org/MichiMaestre/PID-Controller)
+[![Build Status](https://travis-ci.org/MichiMaestre/week4_controller.svg?branch=master)](https://travis-ci.org/MichiMaestre/week4_controller)
 [![Coverage Status](https://coveralls.io/repos/github/MichiMaestre/week4_controller/badge.svg?branch=master)](https://coveralls.io/github/MichiMaestre/week4_controller?branch=master)
 ---
 
