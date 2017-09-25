@@ -27,20 +27,26 @@ bool Controller::isIntialize() { return this->isInit; }
 float Controller::computeStep(float target) {
   // TODO(MichiMaestre): compute the PID Controller logic here
 
-  float output = target;
   // Compute the error target - currentstate
+  this->error = target - this->currentState;
 
   // Update the total error
+  this->totalError += this->error;
 
-  // Compute the propostinal_term
+  // Compute the proportional_term
+  auto proportional_term = this->error * this->getKp();
 
   // Compute the integral_term with DTIME
+  auto integral_term = this->totalError * this->getKi() * this->DTIME;
 
   // Compute the derivative_term with DTIME
+  auto derivative_term = (this->error - this->pError) * this->getKd() / this->DTIME;
 
   // Update the previous error
+  this->pError = this->error;
 
   // calculate the output=p+i+d
+  float output = proportional_term + integral_term + derivative_term;
 
   return scalled(output);
 }
@@ -51,24 +57,27 @@ void Controller::compute(float target) {
 // the compute method until 0.0001 threshold of error^2 or 10000 steps
 
 // Initialize Count
+	int count = 0;
 
-// Do while Loop
+	// Do while Loop
+	do {
+		// Compute the a step in controller
+		auto outputControl = this->computeStep(target);
 
-// Compute the a step in controller
+		// Update the current state based on output
+		this->currentState = this->currentState + outputControl;
 
-// Update the current state based on output
+		// DEBUGGING your logic
+		#ifdef DEBUG_Controller
+		  std::cout << "Step:" << count << " Current:" << this->getCurrentState()
+		            << " and Target:" << target << " Error:" << this->error
+		            << std::endl;
+		#endif
+		  // Increment count
+		  count++;
 
-// DEBUGGING your logic
-#ifdef DEBUG_Controller
-  std::cout << "Step:" << count << " Current:" << this->getCurrentState()
-            << " and Target:" << target << " Error:" << this->error
-            << std::endl;
-#endif
-  // Increment count
-
-  // While condition
-
-  // While condition if this->error * this->error > 0.0001 and count < 10000
+	  // While condition
+	} while (this->error * this->error > 0.0001 && count < 10000);
 }
 
 // Clipping the overshoot output
