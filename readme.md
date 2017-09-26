@@ -1,6 +1,6 @@
 # C++ Boilerplate
 [![Build Status](https://travis-ci.com/raviBhadeshiya/week4_controller.svg?token=b7ep99UiGAJKkz6Z2fSJ&branch=master)](https://travis-ci.com/raviBhadeshiya/week4_controller)
-[![Coverage Status](https://coveralls.io/repos/github/MichiMaestre/PID-Controller/badge.svg?branch=master)](https://coveralls.io/github/MichiMaestre/PID-Controller?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/raviBhadeshiya/week4_controller/badge.svg?branch=master)](https://coveralls.io/github/raviBhadeshiya/week4_controller?branch=master)
 ---
 
 ## Overview
@@ -9,6 +9,12 @@ Simple starter C++ project with:
 
 - cmake
 - googletest
+
+
+## TODO
+- (MichiMaestre): Implement computeStep method for PID Controller
+- (MichiMaestre): Implement compute method that only update the state and call computeStep method
+
 
 ## Standard install via command-line
 ```
@@ -56,19 +62,3 @@ cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_ECLI
 Open Eclipse, go to File -> Import -> General -> Existing Projects into Workspace -> 
 Select "boilerplate-eclipse" directory created previously as root directory -> Finish
 
-# Edit
-
-Source files may be edited under the "[Source Directory]" label in the Project Explorer.
-
-
-## Build
-
-To build the project, in Eclipse, unfold boilerplate-eclipse project in Project Explorer,
-unfold Build Targets, double click on "all" to build all projects.
-
-## Run
-
-1. In Eclipse, right click on the boilerplate-eclipse in Project Explorer,
-select Run As -> Local C/C++ Application
-
-2. Choose the binaries to run (e.g. shell-app, cpp-test for unit testing)
